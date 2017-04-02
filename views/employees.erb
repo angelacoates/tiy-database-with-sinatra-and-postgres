@@ -20,10 +20,7 @@
   <body>
       <div class="panel panel-success">
         <div class="panel-heading"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Employee List</div>
-
-  <!-- Table -->
-  <!-- <table class="table"> -->
-    <table class="table">
+      <table class="table">
       <tbody>
       <tr>
         <th>Name</th>
@@ -32,22 +29,24 @@
         <th>Position</th>
         <th>Salary</th>
         <th>Slack</th>
-        <th>GitHub</th
+        <th>GitHub</th>
       </tr>
       <% @employees.each do |employee| %>
         <tr>
           <td><a href="/show_info?id=<%= employee['id'] %>">
           <%= employee["name"] %></a></td>
           <td><%= employee["phone"] %></td>
-          <td><%= employee["address"]%></td>
-          <td><%= employee["position"]%></td>
+          <td><%= employee["address"] %></td>
+          <td><%= employee["position"] %></td>
           <td><%= employee["salary"] %></td>
-          <td><%= employee["slack"]%></td>
-          <td><%= employee["github"]%></td>
+          <td><%= employee["slack"] %></td>
+          <td><%= employee["github"] %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
+<a href="/add_employee" class="btn btn-success btn-lg active pull-right" role="button">Add New Employee</a>
+</div>
 </div>
 
 

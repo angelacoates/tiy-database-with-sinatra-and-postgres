@@ -19,40 +19,42 @@
   </head>
   <body>
 
-
-
-  </head>
-  <body>
-      <div class="panel panel-success">
-        <div class="panel-heading"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Employee List</div>
-
-    <table class="table">
-      <tbody>
-      <tr>
-        <th>Name</th>
-        <th>Phone</th>
-        <th>Address</th>
-        <th>Position</th>
-        <th>Salary</th>
-        <th>Slack</th>
-        <th>GitHub</th
-      </tr>
-      <% @employees.each do |employee| %>
-        <tr>
-          <td><a href="/show_info?id=<%= employee['id'] %>">
-          <%= employee["name"] %></a></td>
-          <td><%= employee["phone"] %></td>
-          <td><%= employee["address"]%></td>
-          <td><%= employee["position"]%></td>
-          <td><%= employee["salary"] %></td>
-          <td><%= employee["slack"]%></td>
-          <td><%= employee["github"]%></td>
-        </tr>
-      <% end %>
-
-    </tbody>
-  </table>
+    <div class= "container">
+      <form action="/add_employee" method= "get">
+<div class="form-group">
+  <label for="name">Name</label>
+  <input type="name" class="form-control" id="name" placeholder="">
 </div>
+<div class="form-group">
+  <label for="phone">Phone Number</label>
+  <input type="phone" class="form-control" id="phone" placeholder="">
+</div>
+<div class="form-group">
+  <label for="address">Address</label>
+  <input type="address" class="form-control" id="address" placeholder="">
+</div>
+<div class="form-group">
+  <label for="position">Position</label>
+  <input type="position" class="form-control" id="position" placeholder="">
+</div>
+<div class="form-group">
+  <label for="salary">Salary</label>
+  <input type="salary" class="form-control" id="salary" placeholder="">
+</div>
+<div class="form-group">
+  <label for="github">GitHub</label>
+  <input type="github" class="form-control" id="github" placeholder="">
+</div>
+<div class="form-group">
+  <label for="slack">Slack</label>
+  <input type="slack" class="form-control" id="slack" placeholder="">
+</div>
+<button type="submit" class="btn btn-default">Submit</button>
+</form>
+</div>
+
+
+
 
 
 
