@@ -9,8 +9,8 @@ get '/' do
 end
 
 get '/employees' do
-employees_db = PG.connect(dbname:"tiy-database")
-@employees = employees_db.exec("select * from employees")
+  employees_db = PG.connect(dbname:"tiy-database")
+  @employees = employees_db.exec("select * from employees")
 
   erb :employees
 end
@@ -64,7 +64,7 @@ get '/edit_employee' do
 end
 
 get '/update_employee' do
-  addemployee_db = PG.connect(dbname: "tiy-database")
+  update_employee_db = PG.connect(dbname: "tiy-database")
 
   id = params["id"]
   name = params["name"]
@@ -75,6 +75,6 @@ get '/update_employee' do
   github = params["github"]
   slack = params["slack"]
 
-  update_employee_db.exec("UPDATE employees SET name = $2, phone = $3, address = $4, position = $5, salary = $6, github = $7, slack = $8 where id =$1")
+  update_employee_db.exec("UPDATE employees SET name = $2, phone = $3, address = $4, position = $5, salary = $6, github = $7, slack = $8 where id =$1", [id, name, phone, address, position, salary, github, slack])
   redirect to("/employees")
 end
