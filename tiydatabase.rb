@@ -20,8 +20,8 @@ get '/show_info' do
 
   id = params["id"]
 
-  @employees = employees_db.exec("select * from employees where id = $1", [id])
-
+  employees = employees_db.exec("select * from employees where id = $1", [id])
+  @employee = employees.first
   erb :show_info
 end
 
@@ -77,4 +77,26 @@ get '/update_employee' do
 
   update_employee_db.exec("UPDATE employees SET name = $2, phone = $3, address = $4, position = $5, salary = $6, github = $7, slack = $8 where id =$1", [id, name, phone, address, position, salary, github, slack])
   redirect to("/employees")
+end
+
+# search for employees
+get '/search' do
+  employees_db = PG.connect(dbname: "tiy-database")
+  search = params['search']
+  @employees = employees_db.exec("select * from employees where name like '%#{search}%' or github = $1 or slack = $2", [search, search])
+  if @employees.any?
+    erb :employees
+  else
+    "No employees found!"
+  end
+
+end
+
+get '/delete' do
+
+  id = params['id']
+  delete_db = PG.connect(dbname: "tiy-database")
+  employee = delete_db.exec("DELETE FROM employees WHERE id=$1",[id])
+  redirect to ("/employees")
+
 end

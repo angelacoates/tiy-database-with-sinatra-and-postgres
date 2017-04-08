@@ -19,7 +19,9 @@
   </head>
   <body>
       <div class="panel panel-success">
-        <div class="panel-heading"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Employee List</div>
+        <div class="panel-heading">
+          <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Employee List
+        </div>
       <table class="table">
       <tbody>
       <tr>
@@ -46,6 +48,12 @@
     </tbody>
   </table>
   <a href="/add_employee" class="btn btn-success btn-lg active pull-right" role="button">Add New Employee</a>
+  <form class="navbar-form navbar-left" role="search" action="/search">
+    <div class="form-group">
+      <input type="text" name="search" class="form-control" placeholder="Enter employee name">
+    </div>
+    <button type="submit" class="btn btn-default">Search</button>
+  </form>
 </div>
 </div>
 
